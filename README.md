@@ -102,7 +102,7 @@ src/
 public/
 ├── banner.png
 └── logo.png
-
+```
 
 ## API
 
