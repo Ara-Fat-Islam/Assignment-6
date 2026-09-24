@@ -10,13 +10,19 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isHomePage = pathname === "/";
+  const isWorkoutPage = pathname.startsWith("/workout/");
   const isMyPlanPage = pathname === "/my-plan";
 
+  const workoutsActive = isHomePage || isWorkoutPage;
+
   return (
-    <header className="px-4 pt-12">
-      <nav className="mx-auto flex h-[81px] max-w-[1280px] items-center justify-between border border-[#1C1F26] bg-[#0C0D10]/95 px-6 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+      <nav className="mx-auto flex h-[81px] max-w-[1280px] items-center justify-between border border-[#1C1F26] bg-[#0C0D10]/95 px-6 shadow-lg backdrop-blur-md">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+        >
           <Image
             src="/logo.png"
             alt="FitLog"
@@ -30,12 +36,15 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navigation */}
+        {/* Main Navigation */}
         <div className="flex items-center gap-2">
           <Link
             href="/"
+            aria-current={
+              workoutsActive ? "page" : undefined
+            }
             className={`rounded-full px-5 py-2.5 text-[12px] font-semibold transition ${
-              isHomePage
+              workoutsActive
                 ? "bg-[#172507] text-[#CCFF00]"
                 : "text-[#8B8E96] hover:text-white"
             }`}
@@ -45,6 +54,9 @@ export default function Navbar() {
 
           <Link
             href="/my-plan"
+            aria-current={
+              isMyPlanPage ? "page" : undefined
+            }
             className={`rounded-full px-5 py-2.5 text-[12px] font-semibold transition ${
               isMyPlanPage
                 ? "bg-[#172507] text-[#CCFF00]"

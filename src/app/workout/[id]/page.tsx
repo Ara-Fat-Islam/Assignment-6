@@ -44,14 +44,14 @@ export default async function WorkoutDetails({
 
   if (!workout) {
     return (
-      <main className="mx-auto max-w-[1232px] px-6 py-20">
+      <main className="mx-auto max-w-[1232px] px-6 pb-20 pt-[129px]">
         <h1 className="text-3xl font-bold text-white">
           Workout not found
         </h1>
 
         <Link
           href="/"
-          className="mt-6 inline-block text-[#CCFF00]"
+          className="mt-6 inline-block text-[#CCFF00] hover:underline"
         >
           ← Back to workouts
         </Link>
@@ -60,10 +60,10 @@ export default async function WorkoutDetails({
   }
 
   return (
-    <main className="mx-auto max-w-[1232px] px-6 py-16">
+    <main className="mx-auto max-w-[1232px] px-6 pb-16 pt-[129px]">
       <Link
         href="/"
-        className="text-sm text-[#9CA3AF] hover:text-[#CCFF00]"
+        className="text-sm text-[#9CA3AF] transition hover:text-[#CCFF00]"
       >
         ← Back to workouts
       </Link>
@@ -105,42 +105,60 @@ export default async function WorkoutDetails({
           {/* Workout Specs */}
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div>
-              <p className="text-xs text-[#777B84]">Equipment</p>
+              <p className="text-xs text-[#777B84]">
+                Equipment
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.equipment}
               </p>
             </div>
 
             <div>
-              <p className="text-xs text-[#777B84]">Difficulty</p>
+              <p className="text-xs text-[#777B84]">
+                Difficulty
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.difficulty}
               </p>
             </div>
 
             <div>
-              <p className="text-xs text-[#777B84]">Sets</p>
+              <p className="text-xs text-[#777B84]">
+                Sets
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.sets}
               </p>
             </div>
 
             <div>
-              <p className="text-xs text-[#777B84]">Reps</p>
+              <p className="text-xs text-[#777B84]">
+                Reps
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.reps}
               </p>
             </div>
 
             <div>
-              <p className="text-xs text-[#777B84]">Duration</p>
+              <p className="text-xs text-[#777B84]">
+                Duration
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.duration} min
               </p>
             </div>
 
             <div>
-              <p className="text-xs text-[#777B84]">Calories</p>
+              <p className="text-xs text-[#777B84]">
+                Calories
+              </p>
+
               <p className="mt-1 text-sm text-white">
                 {workout.caloriesBurned} kcal
               </p>
@@ -149,7 +167,9 @@ export default async function WorkoutDetails({
 
           {/* Rating */}
           <div className="mt-8">
-            <p className="text-xs text-[#777B84]">Rating</p>
+            <p className="text-xs text-[#777B84]">
+              Rating
+            </p>
 
             <p className="mt-1 text-lg text-[#CCFF00]">
               ★ {workout.rating}
@@ -163,18 +183,20 @@ export default async function WorkoutDetails({
             </h2>
 
             <ol className="mt-4 space-y-3">
-              {workout.instructions.map((instruction, index) => (
-                <li
-                  key={instruction}
-                  className="flex gap-3 text-sm leading-6 text-[#9CA3AF]"
-                >
-                  <span className="font-bold text-[#CCFF00]">
-                    {index + 1}.
-                  </span>
+              {workout.instructions.map(
+                (instruction, index) => (
+                  <li
+                    key={instruction}
+                    className="flex gap-3 text-sm leading-6 text-[#9CA3AF]"
+                  >
+                    <span className="font-bold text-[#CCFF00]">
+                      {index + 1}.
+                    </span>
 
-                  <span>{instruction}</span>
-                </li>
-              ))}
+                    <span>{instruction}</span>
+                  </li>
+                )
+              )}
             </ol>
           </div>
 

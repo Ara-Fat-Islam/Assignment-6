@@ -70,7 +70,7 @@ export default function MyPlanPage() {
   }
 
   return (
-    <main className="mx-auto min-h-screen max-w-[1232px] flex-1 px-6 py-16">
+    <main className="mx-auto min-h-screen max-w-[1232px] flex-1 px-6 pb-16 pt-[129px]">
       {/* Header */}
       <div>
         <p className="text-[10px] font-bold tracking-[0.12em] text-[#CCFF00]">
@@ -214,17 +214,9 @@ export default function MyPlanPage() {
                     </p>
 
                     <div className="mt-3 flex flex-wrap gap-5 text-[11px] text-[#9CA3AF]">
-                      <span>
-                        {workout.duration} min
-                      </span>
-
-                      <span>
-                        {workout.caloriesBurned} kcal
-                      </span>
-
-                      <span>
-                        ★ {workout.rating}
-                      </span>
+                      <span>{workout.duration} min</span>
+                      <span>{workout.caloriesBurned} kcal</span>
+                      <span>★ {workout.rating}</span>
                     </div>
                   </div>
 
@@ -238,22 +230,22 @@ export default function MyPlanPage() {
                     </Link>
 
                     {activeTab === "plan" ? (
-                    <button
-  onClick={() =>
-    handleMarkAsDone(workout.id)
-  }
-  disabled={isDone}
-  className="inline-flex items-center gap-2 rounded-md bg-[#CCFF00] px-4 py-2 text-[10px] font-bold uppercase text-black disabled:cursor-not-allowed disabled:opacity-50"
->
-  <span
-    aria-hidden="true"
-    className="text-sm leading-none"
-  >
-    ✓
-  </span>
+                      <button
+                        onClick={() =>
+                          handleMarkAsDone(workout.id)
+                        }
+                        disabled={isDone}
+                        className="inline-flex items-center gap-2 rounded-md bg-[#CCFF00] px-4 py-2 text-[10px] font-bold uppercase text-black disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="text-sm leading-none"
+                        >
+                          ✓
+                        </span>
 
-  {isDone ? "DONE" : "MARK AS DONE"}
-</button>
+                        {isDone ? "DONE" : "MARK AS DONE"}
+                      </button>
                     ) : (
                       <button
                         onClick={() =>
