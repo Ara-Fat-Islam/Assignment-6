@@ -125,10 +125,31 @@ export default function WorkoutLibrary() {
 
       {/* Loading */}
       {loading && (
-        <p className="mt-8 text-sm text-[#9CA3AF]">
-          Loading workouts...
-        </p>
-      )}
+  <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {Array.from({ length: 6 }).map((_, index) => (
+      <div
+        key={index}
+        className="overflow-hidden rounded-xl border border-[#222630] bg-[#15171D]"
+      >
+        <div className="h-[220px] animate-pulse bg-[#1B1E25]" />
+
+        <div className="space-y-3 p-5">
+          <div className="h-3 w-20 animate-pulse rounded bg-[#24262D]" />
+
+          <div className="h-5 w-3/4 animate-pulse rounded bg-[#24262D]" />
+
+          <div className="h-3 w-1/2 animate-pulse rounded bg-[#24262D]" />
+
+          <div className="flex gap-3">
+            <div className="h-3 w-16 animate-pulse rounded bg-[#24262D]" />
+            <div className="h-3 w-16 animate-pulse rounded bg-[#24262D]" />
+            <div className="h-3 w-12 animate-pulse rounded bg-[#24262D]" />
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
 
       {/* Error */}
       {error && (

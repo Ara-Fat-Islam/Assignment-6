@@ -20,9 +20,13 @@ export default function Hero() {
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <button className="mt-6 rounded-md bg-[#CCFF00] px-5 py-3 text-[10px] font-bold text-black">
-            BROWSE WORKOUTS
-          </button>
+         <a
+  href="#library"
+  className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#CCFF00] px-5 py-3 text-[10px] font-bold text-black transition hover:bg-[#d8ff33]"
+>
+  BROWSE WORKOUTS
+  <span aria-hidden="true">↓</span>
+</a>
         </div>
 
         <div className="flex h-[334px] w-[334px] shrink-0 items-center justify-center">
