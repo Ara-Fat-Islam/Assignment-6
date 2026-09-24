@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WorkoutActions from "@/components/WorkoutActions";
 
 type Workout = {
   id: number;
@@ -68,6 +69,7 @@ export default async function WorkoutDetails({
       </Link>
 
       <section className="mt-8 grid gap-8 lg:grid-cols-2">
+        {/* Workout Image */}
         <div className="overflow-hidden rounded-2xl border border-[#222630] bg-[#15171D]">
           <img
             src={workout.image}
@@ -76,7 +78,9 @@ export default async function WorkoutDetails({
           />
         </div>
 
+        {/* Workout Information */}
         <div>
+          {/* Muscle Groups */}
           <div className="flex flex-wrap gap-2">
             {workout.muscleGroups.map((group) => (
               <span
@@ -88,14 +92,17 @@ export default async function WorkoutDetails({
             ))}
           </div>
 
+          {/* Workout Name */}
           <h1 className="mt-5 text-4xl font-black uppercase text-white">
             {workout.name}
           </h1>
 
+          {/* Description */}
           <p className="mt-5 leading-7 text-[#9CA3AF]">
             {workout.description}
           </p>
 
+          {/* Workout Specs */}
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div>
               <p className="text-xs text-[#777B84]">Equipment</p>
@@ -140,13 +147,16 @@ export default async function WorkoutDetails({
             </div>
           </div>
 
+          {/* Rating */}
           <div className="mt-8">
             <p className="text-xs text-[#777B84]">Rating</p>
+
             <p className="mt-1 text-lg text-[#CCFF00]">
               ★ {workout.rating}
             </p>
           </div>
 
+          {/* Instructions */}
           <div className="mt-10">
             <h2 className="text-xl font-bold uppercase text-white">
               Instructions
@@ -168,15 +178,8 @@ export default async function WorkoutDetails({
             </ol>
           </div>
 
-          <div className="mt-10 flex gap-3">
-            <button className="rounded-md bg-[#CCFF00] px-5 py-3 text-xs font-bold text-black">
-              ADD TO TODAY&apos;S PLAN
-            </button>
-
-            <button className="rounded-md border border-[#343740] px-5 py-3 text-xs font-bold text-white">
-              SAVE FOR LATER
-            </button>
-          </div>
+          {/* Actions */}
+          <WorkoutActions workout={workout} />
         </div>
       </section>
     </main>
