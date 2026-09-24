@@ -238,17 +238,22 @@ export default function MyPlanPage() {
                     </Link>
 
                     {activeTab === "plan" ? (
-                      <button
-                        onClick={() =>
-                          handleMarkAsDone(workout.id)
-                        }
-                        disabled={isDone}
-                        className="rounded-md bg-[#CCFF00] px-4 py-2 text-[10px] font-bold uppercase text-black disabled:cursor-not-allowed disabled:opacity-50"
-                      >
-                        {isDone
-                          ? "DONE"
-                          : "MARK AS DONE"}
-                      </button>
+                    <button
+  onClick={() =>
+    handleMarkAsDone(workout.id)
+  }
+  disabled={isDone}
+  className="inline-flex items-center gap-2 rounded-md bg-[#CCFF00] px-4 py-2 text-[10px] font-bold uppercase text-black disabled:cursor-not-allowed disabled:opacity-50"
+>
+  <span
+    aria-hidden="true"
+    className="text-sm leading-none"
+  >
+    ✓
+  </span>
+
+  {isDone ? "DONE" : "MARK AS DONE"}
+</button>
                     ) : (
                       <button
                         onClick={() =>

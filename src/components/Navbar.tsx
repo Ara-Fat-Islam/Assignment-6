@@ -2,10 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useWorkout } from "@/context/WorkoutContext";
 
 export default function Navbar() {
   const { plan, saved } = useWorkout();
+  const pathname = usePathname();
+
+  const isHomePage = pathname === "/";
+  const isMyPlanPage = pathname === "/my-plan";
 
   return (
     <header className="px-4 pt-12">
@@ -29,14 +34,22 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/"
-            className="rounded-full bg-[#172507] px-5 py-2.5 text-[12px] font-semibold text-[#CCFF00]"
+            className={`rounded-full px-5 py-2.5 text-[12px] font-semibold transition ${
+              isHomePage
+                ? "bg-[#172507] text-[#CCFF00]"
+                : "text-[#8B8E96] hover:text-white"
+            }`}
           >
             Workouts
           </Link>
 
           <Link
             href="/my-plan"
-            className="px-4 py-2.5 text-[12px] text-[#8B8E96]"
+            className={`rounded-full px-5 py-2.5 text-[12px] font-semibold transition ${
+              isMyPlanPage
+                ? "bg-[#172507] text-[#CCFF00]"
+                : "text-[#8B8E96] hover:text-white"
+            }`}
           >
             My Plan
           </Link>

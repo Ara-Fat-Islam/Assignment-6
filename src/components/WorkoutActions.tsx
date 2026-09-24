@@ -68,24 +68,31 @@ export default function WorkoutActions({
   return (
     <>
       <div className="mt-10 flex gap-3">
-        <button
-          onClick={handleAddToPlan}
-          disabled={alreadyAdded || planIsFull}
-          className="rounded-md bg-[#CCFF00] px-5 py-3 text-xs font-bold text-black disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {alreadyAdded
-            ? "ALREADY IN PLAN"
-            : planIsFull
-              ? "PLAN FULL"
-              : "ADD TO TODAY&apos;S PLAN"}
-        </button>
+       <button
+  onClick={handleAddToPlan}
+  disabled={alreadyAdded || planIsFull}
+  className="inline-flex items-center gap-2 rounded-md bg-[#CCFF00] px-5 py-3 text-xs font-bold text-black disabled:cursor-not-allowed disabled:opacity-50"
+>
+  <span aria-hidden="true" className="text-base leading-none">
+    +
+  </span>
 
-        <button
-          onClick={handleSave}
-          className="rounded-md border border-[#343740] px-5 py-3 text-xs font-bold text-white"
-        >
-          SAVE FOR LATER
-        </button>
+  {alreadyAdded
+    ? "ALREADY IN PLAN"
+    : planIsFull
+      ? "PLAN FULL"
+      : "ADD TO TODAY'S PLAN"}
+</button>
+<button
+  onClick={handleSave}
+  className="inline-flex items-center gap-2 rounded-md border border-[#343740] px-5 py-3 text-xs font-bold text-white"
+>
+  <span aria-hidden="true" className="text-sm leading-none">
+    ♡
+  </span>
+
+  SAVE FOR LATER
+</button>
       </div>
 
       <Toast message={message} />
