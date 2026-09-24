@@ -102,45 +102,58 @@ src/
 public/
 ├── banner.png
 └── logo.png
-API
+
+
+## API
 
 Workout data is fetched from the FitLog API:
 
 https://api.abcz.workers.dev/api/fitlog
 
-Local Development
+## Local Development
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
 Open:
 
 http://localhost:3000
 
-Production
+## Production
 
 Create a production build:
 
+```bash
 npm run build
+```
 
 Start the production server locally:
 
+```bash
 npm start
+```
 
 The production application is deployed on Vercel.
 
-Deployment
+## Deployment
 
 The project is connected to GitHub and deployed through Vercel.
 
+```text
 GitHub → Vercel → Production
-Author
+```
 
-Arafat Islam
+## Author
+
+**Arafat Islam**
 
 Daffodil International University
