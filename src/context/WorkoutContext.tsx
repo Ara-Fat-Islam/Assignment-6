@@ -94,14 +94,18 @@ export function WorkoutProvider({
   }, [completed, isLoaded]);
 
   function addToPlan(workout: Workout) {
-    setPlan((currentPlan) => {
-      if (currentPlan.some((item) => item.id === workout.id)) {
-        return currentPlan;
-      }
+  setPlan((currentPlan) => {
+    if (currentPlan.some((item) => item.id === workout.id)) {
+      return currentPlan;
+    }
 
-      return [...currentPlan, workout];
-    });
-  }
+    if (currentPlan.length >= 5) {
+      return currentPlan;
+    }
+
+    return [...currentPlan, workout];
+  });
+}
 
   function saveWorkout(workout: Workout) {
     setSaved((currentSaved) => {

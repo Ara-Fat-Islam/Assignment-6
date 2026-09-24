@@ -27,9 +27,15 @@ type WorkoutActionsProps = {
 export default function WorkoutActions({
   workout,
 }: WorkoutActionsProps) {
-  const { addToPlan, saveWorkout } = useWorkout();
+  const { plan, addToPlan, saveWorkout } = useWorkout();
 
   const [message, setMessage] = useState("");
+
+  const alreadyAdded = plan.some(
+    (item) => item.id === workout.id
+  );
+
+  const planIsFull = plan.length >= 5;
 
   function showToast(text: string) {
     setMessage(text);
@@ -40,6 +46,16 @@ export default function WorkoutActions({
   }
 
   function handleAddToPlan() {
+    if (alreadyAdded) {
+      showToast("Workout is already in today's plan");
+      return;
+    }
+
+    if (planIsFull) {
+      showToast("Today's plan is full (5 workouts)");
+      return;
+    }
+
     addToPlan(workout);
     showToast("Added to today's plan");
   }
@@ -54,9 +70,14 @@ export default function WorkoutActions({
       <div className="mt-10 flex gap-3">
         <button
           onClick={handleAddToPlan}
-          className="rounded-md bg-[#CCFF00] px-5 py-3 text-xs font-bold text-black"
+          disabled={alreadyAdded || planIsFull}
+          className="rounded-md bg-[#CCFF00] px-5 py-3 text-xs font-bold text-black disabled:cursor-not-allowed disabled:opacity-50"
         >
-          ADD TO TODAY&apos;S PLAN
+          {alreadyAdded
+            ? "ALREADY IN PLAN"
+            : planIsFull
+              ? "PLAN FULL"
+              : "ADD TO TODAY&apos;S PLAN"}
         </button>
 
         <button
