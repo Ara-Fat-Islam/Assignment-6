@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -46,6 +47,51 @@ export function WorkoutProvider({
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
   const [completed, setCompleted] = useState<number[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const savedPlan = localStorage.getItem("fitlog-plan");
+    const savedWorkouts = localStorage.getItem("fitlog-saved");
+    const savedCompleted = localStorage.getItem("fitlog-completed");
+
+    if (savedPlan) {
+      setPlan(JSON.parse(savedPlan));
+    }
+
+    if (savedWorkouts) {
+      setSaved(JSON.parse(savedWorkouts));
+    }
+
+    if (savedCompleted) {
+      setCompleted(JSON.parse(savedCompleted));
+    }
+
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    localStorage.setItem("fitlog-plan", JSON.stringify(plan));
+  }, [plan, isLoaded]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    localStorage.setItem(
+      "fitlog-saved",
+      JSON.stringify(saved)
+    );
+  }, [saved, isLoaded]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    localStorage.setItem(
+      "fitlog-completed",
+      JSON.stringify(completed)
+    );
+  }, [completed, isLoaded]);
 
   function addToPlan(workout: Workout) {
     setPlan((currentPlan) => {
